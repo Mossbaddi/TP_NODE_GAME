@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="/stylesheets/style.css" />
+
+<ul class="nav">
+	<li><a href="/" data-title="home">Home</a></li>
+	<% if (!locals.req.session.user) { %>
+	<li><a href="/login" data-title="Login">Login</a></li>
+	<li><a href="/register" data-title="Register">Register</a></li>
+	<% } %> <% if (locals.req.session.user) { %>
+	<li><a href="/backoffice" data-title="BackOffice">BackOffice</a></li>
+	<li><a href="/fight/<%= locals.req.session.user._id %> " data-title="Combat">Combat</a></li>
+	<li><a href="/logout" data-title="Logout">Logout</a></li>
+	<% } %>
+</ul>

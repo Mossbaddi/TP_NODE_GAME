@@ -1,0 +1,49 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>BackOffice</title>
+		<!-- link  -->
+		<!-- <link rel="stylesheet" href="/stylesheets/card.css" /> -->
+		<link rel="stylesheet" href="/stylesheets/fight.css" />
+		<script src="/javascripts/lib/vibrant.js"></script>
+	</head>
+	<body>
+		<%- include('partials/nav.ejs') %>
+		<div class="container" id="containerbtn">
+			<button id="lancement" class="btn" style="--color: #c4b083; --color2: #506d92">Lancer Un Combat</button>
+		</div>
+
+		<div
+			class="container"
+			id="gamecontainer"
+			style="display: none"
+			gameclasse="<%= element.class %>"
+			UserBG="<%= element.avatar %>"
+			Username="<%= element.name %>"
+			Userid="<%= element._id %>"
+		>
+			<div id="attaques">
+				<!-- Poser les bouttons -->
+			</div>
+		</div>
+	</body>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" />
+
+	<script
+		src="https://code.jquery.com/jquery-3.6.1.min.js"
+		integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+		crossorigin="anonymous"
+	></script>
+
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+	<script type="module" src="/javascripts/src/Personnage.js"></script>
+	<script type="module" src="/javascripts/src/Guerrier.js"></script>
+	<script type="module" src="/javascripts/src/Mage.js"></script>
+	<script type="module" src="/javascripts/src/Tank.js"></script>
+	<script type="module" src="/javascripts/src/Ui.js"></script>
+	<script type="module" src="/javascripts/src/Spell.js"></script>
+	<script type="module" src="/javascripts/src/app.js"></script>
+</html>

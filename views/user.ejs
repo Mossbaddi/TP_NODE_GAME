@@ -1,0 +1,60 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>BackOffice</title>
+		<!-- link  -->
+		<link rel="stylesheet" href="/stylesheets/card.css" />
+	</head>
+	<body>
+		<%- include('partials/nav.ejs') %>
+		<div class="container">
+			<figure class="snip1336">
+				<img src="<%= element.BG %> " alt="sample87" />
+				<figcaption>
+					<form id="updateform" action="/update/<%= element._id %>" method="POST">
+						<img src="<%= element.avatar %> " alt="profile-sample4" class="profile" />
+						<h2>
+							<input type="text" name="name" value="<%= element.name %>" />
+							<span>
+								<input type="text" name="class" value="<%= element.class %>" />
+							</span>
+						</h2>
+						<input type="mail" name="email" value="<%= element.email %>" />
+						<input type="text" name="description" value="<%= element.description %>" />
+						<ul>
+							<li>
+								Nombre de Matchs :
+								<input type="text" name="nbmatchs" value="<%= element.NombreDeMatchs %>" />
+							</li>
+							<li>
+								Nombre de Victoires :
+								<input type="text" name="nbvictoire" value="<%= element.NombreDeVictoires %>" />
+							</li>
+							<li>
+								Nombre de Defaites :
+								<input type="text" name="nbdefaite" value="<%= element.NombreDeDefaites %>" />
+							</li>
+						</ul>
+						<a href="#" onclick="document.getElementById('updateform').submit();" class="follow">
+							Update
+						</a>
+						<a id="Delete<%= element._id %>" href="" class="info">Delete</a>
+					</form>
+					<script>
+						document.querySelector("#Delete<%= element._id %>").addEventListener("click", function (e) {
+							e.preventDefault();
+							fetch("/api/delete/" + "<%= element._id %>", {
+								method: "DELETE",
+								headers: {
+									"Content-Type": "application/json",
+								},
+							});
+						});
+					</script>
+				</figcaption>
+			</figure>
+		</div>
+	</body>
+</html>

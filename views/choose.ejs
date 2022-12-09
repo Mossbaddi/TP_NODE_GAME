@@ -1,0 +1,61 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>BackOffice</title>
+		<!-- link  -->
+		<link rel="stylesheet" href="/stylesheets/card.css" />
+		<link rel="stylesheet" href="/stylesheets/choose.css" />
+
+	</head>
+	<body >
+		<%- include('partials/nav.ejs') %>
+
+
+		<h1 style="text-align: center;">Choix de la classe</h1>
+		<div id="choix">
+			<div class="Class-card-wrap">
+				<button class="card" onclick="(()=>{
+					// console.log('click')
+					fetch ('/api/choose/<%= element._id %>/Mage', {
+						method: 'POST',
+					}).finally(() => {
+						window.location.href = '/fight/<%= element._id %>';
+					});
+
+					})()" style='background-image: url("/images/Mages/mage1.png");
+				background-size: cover;
+				background-position: center;'"></button>
+				</div>
+				<div class="Class-card-wrap">
+					<button class="card" onclick="(()=>{
+						// console.log('click')
+						fetch ('/api/choose/<%= element._id %>/Guerrier', {
+							method: 'POST',
+						}).finally(() => {
+							window.location.href = '/fight/<%= element._id %>';
+						});
+
+						})()" style='background-image: url("/images/Guerriers/guerrier1.png");
+					background-size: cover;
+					background-position: center;'"></button>
+					</div>
+					<div class="Class-card-wrap">
+						<button class="card" onclick="(()=>{
+							// console.log('click')
+							fetch ('/api/choose/<%= element._id %>/Tank', {
+								method: 'POST',
+							}).finally(() => {
+								window.location.href = '/fight/<%= element._id %>';
+							});
+
+							})()" style='background-image: url("/images/Tanks/tank1.png");
+						background-size: cover;
+						background-position: center;'"></button>
+						</div>
+
+		</div>
+	</body>
+
+</html>

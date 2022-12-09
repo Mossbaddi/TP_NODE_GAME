@@ -1,0 +1,46 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>BackOffice</title>
+		<!-- link  -->
+		<link rel="stylesheet" href="/stylesheets/card.css" />
+	</head>
+	<body>
+		<%- include('partials/nav.ejs') %>
+		<div class="container">
+			<% items.forEach(element => { %>
+			<figure class="snip1336">
+				<img src="<%= element.BG %> " alt="sample87" />
+				<figcaption>
+					<img src="<%= element.avatar %> " alt="profile-sample4" class="profile" />
+					<h2><%= element.name %> <span><%= element.class %> </span></h2>
+					<p><%= element.email %></p>
+					<p><%= element.description %></p>
+					<ul>
+						<li>Nombre de Matchs : <%= element.NombreDeMatchs %></li>
+						<li>Nombre de Victoires : <%= element.NombreDeVictoires %></li>
+						<li>Nombre de Defaites : <%= element.NombreDeDefaites %></li>
+					</ul>
+					<a href="/user/<%= element._id %>" class="follow">Update</a>
+					<a id="Delete<%= element._id %>" href="#" class="info">Delete</a>
+					<script>
+						document.querySelector("#Delete<%= element._id %>").addEventListener("click", function (e) {
+							// e.preventDefault();
+							fetch("/api/delete/" + "<%= element._id %>", {
+								method: "DELETE",
+								headers: {
+									"Content-Type": "application/json",
+								},
+							}).finally(() => {
+								window.location.href = "/backoffice";
+							});
+						});
+					</script>
+				</figcaption>
+			</figure>
+			<% }) %>
+		</div>
+	</body>
+</html>
